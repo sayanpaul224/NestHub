@@ -1,0 +1,151 @@
+:root {
+    --primary-100: #2179FF;
+    --primary-90: #1E6DE5;
+    --primary-80: #1B61CC;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    --nav-bg: #0D3166;
+}
+
+body {
+    background-color: var(--gray-100);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--gray-900);
+}
+
+.navbar {
+    background-color: var(--nav-bg);
+    box-shadow: 0 4px 12px rgba(13, 49, 102, 0.15);
+    padding: 1.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.back-button {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.back-button:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-2px);
+}
+
+
+.mainbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.plscont .desc{
+    font-size: 3.5rem;
+}
+
+.gridbox{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    margin-left: 50px;
+    width: 90%;
+}
+.dev{
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0px 5px 8px rgb(86, 86, 86);
+    width: 600px;
+    height: auto;
+    border-radius: 13px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 13px;
+    transition: 0.4s ease-out;
+}
+
+.dev:hover {
+  /**transform: translate(-6px, -6px);**/
+  box-shadow: 12px 12px rgba(0, 0, 0, 0.2);
+}
+
+.name{
+    margin-top: 45px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgb(39, 39, 39);
+}
+
+.innerrole{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.desc{
+    font-size: 1.15rem;
+    font-weight: 450;
+    color: #495057;
+}
+
+
+.clickable-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 150px;
+  border-radius: 70%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.clickable-image.enlarged {
+  transform: scale(2); /* Adjust the scale as needed */
+  z-index: 1000;
+}
+
+
+
+.social-icons a {
+  margin: 0 10px;
+  font-size: 24px;
+  color: #595959;
+  text-decoration: none;
+}
+
+.lin:hover {
+  color: #0077b5; /* LinkedIn blue */
+}
+
+.ghub:hover {
+  color: #000000; /* LinkedIn blue */
+}
+
+.port:hover {
+  color: #00824c; /* LinkedIn blue */
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Listings</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #4cc9f0;
+      --success-color: #2ecc71;
+      --danger-color: #e74c3c;
+      --primary-100: #2179FF;
+      --primary-90: #1E6DE5;
+      --primary-80: #1B61CC;
+      --gray-100: #F8F9FA;
+      --gray-200: #E9ECEF;
+      --gray-300: #DEE2E6;
+      --gray-700: #495057;
+      --gray-900: #212529;
+      --nav-bg: #0D3166;
+    }
+    
+    
+    body {
+      background-color: #f8f9fa;
+      /* padding-top: 2rem; */
+    }
+
+
+    .navbar {
+    background-color: var(--nav-bg);
+    box-shadow: 0 4px 12px rgba(13, 49, 102, 0.15);
+    padding: 1.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-bottom: 1rem;
+    }
+
+
+    .back-button {
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        padding: 0.625rem 1.25rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateX(-2px);
+    }
+    
+    .property-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      border: none;
+      height: 100%;
+    }
+    
+    .property-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .property-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .badge-status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    
+    .live {
+      background-color: var(--success-color);
+    }
+    
+    .sold {
+      background-color: var(--danger-color);
+    }
+    
+    .property-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .property-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .property-location {
+      color: #6c757d;
+      margin-bottom: 1rem;
+    }
+    
+    .property-features {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    .feature {
+      text-align: center;
+    }
+    
+    .feature i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .feature-value {
+      font-weight: 600;
+    }
+    
+    .feature-label {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+    
+    .property-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+    
+    .btn-contact {
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+    
+    .posted-date {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .switch-label {
+      margin-left: 10px;
+      font-family: Arial, sans-serif;
+      vertical-align: middle;
+    }
+    
+    .status-indicator {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: white;
+      background-color: #6c757d;
+    }
+    
+    .status-live {
+      background-color: #4CAF50;
+    }
+  </style>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <button class="btn back-button" onclick="history.back()">
+              <i class="fas fa-arrow-left"></i>
+              <span>Back</span>
+          </button>           
+      </div>
+    </nav>
+
+  <div class="container">
+
+    <!-- <h1 class=" mb-5">Property Listings</h1> -->
+    <div class="row" id="property-list">
+      <!-- Properties will be loaded here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
